@@ -1,26 +1,34 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
 <?php
-include('conn.php');
+include("lms-header.php");
 ?>
 
-<body>
-
-  <form class="form" action="./login_check.php" method="post" id="login">
+<div class="main-container">
+  <form class="layui-form" action="./login_check.php" method="post" id="login">
     <h1 class="login-title">Login</h1>
-    <input type="email" class="login-input" name="email" placeholder="Email" autofocus>
-    <input type="password" class="login-input" name="password" placeholder="Password">
-    <input type="submit" value="Login" name="submit" class="login-button">
-    <p class="link">Don't have an account? <a href="./signup.php">sign up Now</a></p>
+    <div class="demo-login-container">
+      <div class="layui-form-item">
+        <div class="layui-input-wrap">
+          <div class="layui-input-prefix">
+            <i class="layui-icon layui-icon-username"></i>
+          </div>
+          <input type="email" name="email" value="" lay-verify="required" placeholder="Email" lay-reqtext="Please enter email" class="layui-input" lay-affix="clear">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-wrap">
+          <div class="layui-input-prefix">
+            <i class="layui-icon layui-icon-password"></i>
+          </div>
+          <input type="password" name="password" value="" lay-verify="required" placeholder="Password" lay-reqtext="Please enter password" class="layui-input" lay-affix="eye">
+        </div>
+      </div>
+
+      <input type="submit" value="Login" name="submit" class="layui-btn layui-btn-fluid layui-bg-blue">
+      <p class="link">Don't have an account? <a href="./signup.php">sign up Now</a></p>
+    </div>
   </form>
+</div>
 
-</body>
-
-</html>
+<?php
+include('./footer.php');
+?>

@@ -1,47 +1,26 @@
 <?php
-header('Content-Type:text/html;charset=utf-8');
-
-$servername = '127.0.0.1';
-$username = 'root';
-$password = '';
-$dbname = "library";
-
-// create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// check status
-if ($conn->connect_error) {
-    exit('Failed: ' . $conn->connect_error);
-}
-echo '<script> console.log("Successful connect to DB")</script>';
-
-function alert($str, $url)
-{
-    echo '<script> alert ("' . $str . '");location.href="' . $url . '";</script>';
-}
+include("../conn.php");
 
 session_start();
 
 if (!isset($_SESSION['email'])) {
     alert('Please login first', '../login.php');
 }
-$sql = "select * from borrow where state = 0";
-$rs = mysqli_query($conn, $sql);
-$num = mysqli_num_rows($rs);
-if ($num > 0) {
-    $span = '<span class = "layui-badge-rim">' . $num . '</span>';
-} else {
-    $span = null;
+
+if ($_SESSION['member_type'] !== 'Admin') {
+    alert('Your member type have no access to this page', '../index.php');
 }
-function limits($limits)
+
+
+function limits()
 {
     $conn = @mysqli_connect('127.0.0.1', 'root', '', 'library') or die('链接失败');
     mysqli_query($conn, 'set names utf8');
-    $username = $_SESSION['username'];
-    $sql = "select * from user where username = '$username' and limits like '%" . $limits . "%'";
+    $email = $_SESSION['email'];
+    $sql = "select * from user where email = '$email' and Member_type = 'Admin'";
     $res = mysqli_query($conn, $sql);
     if (mysqli_num_rows($res) < 1) {
-        alert('您不具备访问该页面的权限', 'index.php');
+        alert('you have no authorization to access this page', 'index.php');
         exit();
     }
 }
@@ -72,10 +51,8 @@ function limits($limits)
                         个人中心
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="mine_info_list.php">Me</a></dd>
-                        <dd><a href="mine_borrow_new.php">借阅申请</a></dd>
-                        <dd><a href="mine_borrow_list.php">申请列表</a></dd>
-                        <dd><a href="mine_book_list.php">我的书籍</a></dd>
+                        <dd><a href="my_info.php">Me</a></dd>
+                        <dd><a href="my_book_list.php">My books</a></dd>
                     </dl>
                 </li>
             </ul>
@@ -89,7 +66,7 @@ function limits($limits)
                         <a class="" href="javascript:;">Manage book</a>
                         <dl class="layui-nav-child">
                             <dd><a href="book_list.php">Book list</a></dd>
-                            <dd><a href="book_new.php">Add new book</a></dd>
+                            <dd><a href="add_book.php">Add new book</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">

@@ -1,19 +1,21 @@
 <?php
-include("conn.php");
+include("lms-header.php");
 session_start();
 ?>
 
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Borrow a Book</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
 <body>
-  <p>Welcome! <?php echo $_SESSION['firstName'] ?></p>
-</body>
+  <div class="main-container">
+    <?php
+    if ($_SESSION['firstName']) {
+      $first_name = $_SESSION['firstName'];
+      echo "<h1>Welcome! $first_name</h1>";
+    } else {
+      echo "<h1>Welcome! Login to start borrow a book for free</h1>";
+    }
+    ?>
+  </div>
 
-</html>
+  <?php
+  include('./footer.php');
+  ?>
+</body>

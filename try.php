@@ -13,29 +13,38 @@ if ($conn->connect_error) {
 }
 echo '<script> console.log("连接成功")</script>';
 
+// $sql = "CREATE TABLE users (
+//   Member_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+//   Member_type ENUM('Member', 'Admin') DEFAULT 'Member', 
+//   username VARCHAR(30) NOT NULL,
+//   first_name VARCHAR(20),
+// 	last_name  VARCHAR(20),
+//   email VARCHAR(50) NOT NULL,
+//   password VARCHAR(255) NOT NULL,
+//   create_datetime TIMESTAMP
+//   )";
 
-// $username = 'jeffrey';
-// $email = '5624@qq.com';
-// $password = 'test1234';
-// $create_datetime = date("Y-m-d H:i:s");
+// $sql = "CREATE TABLE book_status (
+//     Member_id VARCHAR(20),
+//     Book_id VARCHAR(20),
+//     Status ENUM('Available', 'On-loan', 'Deleted') DEFAULT 'Available',
+//     Applied_date  TIMESTAMP
+//     )";
 
-
-$sql = "CREATE TABLE users (
-  Member_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-  Member_type ENUM('Member', 'Admin') DEFAULT 'Member', 
-  username VARCHAR(30) NOT NULL,
-  first_name VARCHAR(20),
-	last_name  VARCHAR(20),
-  email VARCHAR(50) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  create_datetime TIMESTAMP
-  )";
+$sql = "CREATE TABLE books (
+      Book_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+      Book_title VARCHAR(30) NOT NULL,
+      Author VARCHAR(20),
+      Publisher VARCHAR(20),
+      Language ENUM('English', 'French', 'German', 'Mandarin', 'Japanese', 'Russian', 'Other') DEFAULT 'English', 
+      Category ENUM('Fiction', 'Nonfiction', 'Reference') DEFAULT 'Fiction'
+      )";
 
 // 使用 sql 创建数据表
 // $sql = "INSERT into `admin` (admin_id, password, email, create_datetime) VALUES ('$username', '" . password_hash($password, PASSWORD_DEFAULT) . "', '$email', '$create_datetime')";
 
 if ($conn->query($sql) === TRUE) {
-  echo "新记录插入成功";
+  echo "创建成功";
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }

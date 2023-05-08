@@ -17,6 +17,7 @@ if (mysqli_num_rows($res) > 0) {
     alert('This email is already exist', 'signup.php');
     exit();
 }
+
 if (strlen($password) < 6) {
     alert('Password must not less than 6 character', 'signup.php');
     exit();
