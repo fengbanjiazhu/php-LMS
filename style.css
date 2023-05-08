@@ -9,13 +9,19 @@ body {
 .main-container {
   text-align: center;
   padding: 4rem 4rem;
-  height: 80vh;
+  min-height: 80vh;
 }
 .main-container.layui-form {
   align-items: center;
   justify-content: center;
 }
 
+/* banner */
+.image-container img {
+  margin-top: 2rem;
+  max-width: 100%;
+}
+/* book */
 .card-container {
   max-width: 120rem;
   margin: 0 auto;
@@ -24,7 +30,6 @@ body {
   grid-gap: 7rem;
 }
 
-/* book */
 .card {
   border-radius: 3px;
   overflow: hidden;
@@ -102,6 +107,10 @@ body {
   margin: 21px auto 0;
 }
 
+.demo-reg-container h1 {
+  margin-bottom: 1rem;
+}
+
 .demo-reg-other .layui-icon {
   position: relative;
   display: inline-block;
@@ -109,10 +118,9 @@ body {
   top: 2px;
   font-size: 26px;
 }
+
 /* header */
-.lms-header {
-  margin-bottom: 2rem;
-}
+
 .layui-nav a {
   font-weight: bold;
   font-size: 1rem;

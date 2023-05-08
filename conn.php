@@ -19,4 +19,6 @@ function alert($str, $url)
     echo '<script> alert ("' . $str . '");location.href="' . $url . '";</script>';
 }
 
+
+
 session_start();

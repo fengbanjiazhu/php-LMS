@@ -4,8 +4,8 @@ include("lms-header.php");
 
 <div class="main-container">
   <form class="layui-form" action="signup_check.php" method="post">
-    <h1>Sign up</h1>
     <div class="demo-reg-container">
+      <h1>Sign up</h1>
       <div class="layui-form-item">
         <input type="text" name="username" value="" lay-verify="required" placeholder="Username" autocomplete="off" class="layui-input">
       </div>
