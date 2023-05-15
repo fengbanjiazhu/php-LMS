@@ -29,7 +29,6 @@ if ($password != $passwordConfirm) {
 
 $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
-//insert one
 
 $sql = "INSERT INTO users (username, first_name, last_name, email, password, create_datetime) 
 VALUES ( '$username', '$firstName', '$lastName', '$email', '$passwordHashed', '$create_datetime')";

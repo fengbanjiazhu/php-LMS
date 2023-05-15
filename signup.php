@@ -16,7 +16,7 @@ include("lms-header.php");
         <input type="text" name="lastName" value="" lay-verify="required" placeholder="Last Name" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input id="regEmail" type="email" name="email" value="" lay-verify="required" placeholder="Email Address" autocomplete="off" class="layui-input" onchange="checkAvailability()">
+        <input id="regEmail" type="email" name="email" value="" lay-verify="required" placeholder="Email Address" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
         <input type="password" name="password" value="" lay-verify="required" placeholder="password" autocomplete="off" class="layui-input" lay-affix="eye">

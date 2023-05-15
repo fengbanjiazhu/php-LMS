@@ -14,6 +14,9 @@ session_start();
   <script src="./jquery.js"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
+<style>
+
+</style>
 
 <body>
   <div class="lms-header">

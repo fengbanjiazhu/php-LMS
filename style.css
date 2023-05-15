@@ -60,6 +60,14 @@ body {
   grid-column-gap: 2rem;
   padding: 0 1rem;
 }
+.card .card__details h2 {
+  height: 90px;
+  text-align: center;
+  line-height: 30px;
+}
+#book-page {
+  margin-top: 3rem;
+}
 .card__sub-heading {
   text-transform: uppercase;
   font-weight: 700;
