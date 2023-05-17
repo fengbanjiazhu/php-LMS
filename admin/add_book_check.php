@@ -21,5 +21,7 @@ if (!$res) {
   alert('Please try again', 'add_book.php');
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
+
+
 alert('added successfully', 'add_book.php');
 echo "新记录插入成功";

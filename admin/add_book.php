@@ -9,6 +9,12 @@ session_start();
     <div class="demo-reg-container">
       <h1 class="title">Add new Book</h1>
       <div class="layui-form-item">
+        <button type="button" class="layui-btn" id="uploadBtn">
+          <i class="layui-icon">&#xe67c;</i> Upload Book Cover
+        </button>
+
+      </div>
+      <div class="layui-form-item">
         <input type="text" name="bookTitle" value="" lay-verify="required" placeholder="Book Title" class="layui-input">
       </div>
       <div class="layui-form-item">
@@ -41,3 +47,20 @@ session_start();
     </div>
   </form>
 </div>
+
+<script>
+  layui.use('upload', function() {
+    var upload = layui.upload;
+
+    var uploadInst = upload.render({
+      elem: '#uploadBtn',
+      url: '/upload/',
+      done: function(res) {
+        //上传完毕回调
+      },
+      error: function() {
+        //请求异常回调
+      }
+    });
+  });
+</script>

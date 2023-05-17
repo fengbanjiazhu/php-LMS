@@ -38,12 +38,13 @@ session_start();
       </li>
       <?php
       if ($_SESSION['firstName']) {
-        echo "<li class='layui-nav-item'><a href='./logout.php'>logout</a></li>";
+        echo "<li class='layui-nav-item'><a href='./functions/logout.php'>logout</a></li>";
       } else {
         echo "<li class='layui-nav-item'><a href='./login.php'>login</a></li>";
+        echo "<li class='layui-nav-item'><a href='./signup.php'>sign up</a></li>";
       }
       ?>
-      <li class="layui-nav-item"><a href="./signup.php">sign up</a></li>
+
     </ul>
   </div>
 </body>

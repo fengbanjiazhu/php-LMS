@@ -3,7 +3,7 @@ include("lms-header.php");
 ?>
 
 <div class="main-container">
-  <form class="layui-form" action="./login_check.php" method="post" id="login">
+  <form class="layui-form" action="./functions/login_check.php" method="post" id="login">
     <h1 class="login-title">Login</h1>
     <div class="demo-login-container">
       <div class="layui-form-item">

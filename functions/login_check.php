@@ -1,5 +1,5 @@
 <?php
-include('conn.php');
+include('../conn.php');
 
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -10,7 +10,7 @@ $res = mysqli_query($conn, $sql);
 
 // while
 if (mysqli_num_rows($res) !== 1) {
-  alert('This email is not signed up yet', 'login.php');
+  alert('This email is not signed up yet', '../login.php');
 }
 
 $row = mysqli_fetch_assoc($res);
@@ -20,7 +20,7 @@ $firstName = $row['first_name'];
 
 
 if (!password_verify($password, $password_hash)) {
-  alert('Wrong password, please try again', 'login.php');
+  alert('Wrong password, please try again', '../login.php');
 }
 
 $_SESSION['email'] = $email;
@@ -28,6 +28,6 @@ $_SESSION['firstName'] = $firstName;
 $_SESSION['member_type'] = $type;
 
 if ($type == 'Member') {
-  alert('successful logged in!', 'index.php');
+  alert('successful logged in!', '../index.php');
 }
-alert('successful logged in!', 'admin/index.php');
+alert('successful logged in!', '../admin/index.php');
