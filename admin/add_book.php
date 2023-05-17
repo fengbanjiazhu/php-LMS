@@ -3,16 +3,20 @@ include("./admin_head.php");
 session_start();
 ?>
 
+<style>
+  #uploadBar {
+    text-align: center;
+    line-height: 38px;
+  }
+</style>
 
 <div class="layui-body">
-  <form class="layui-form" action="./add_book_check.php" method="post">
+  <form class="layui-form" action="./add_book_check.php" method="post" enctype="multipart/form-data">
     <div class="demo-reg-container">
       <h1 class="title">Add new Book</h1>
       <div class="layui-form-item">
-        <button type="button" class="layui-btn" id="uploadBtn">
-          <i class="layui-icon">&#xe67c;</i> Upload Book Cover
-        </button>
-
+        <input type="file" name="bookCoverImage" placeholder="Upload Book Cover" class="layui-input" id="uploadBar">
+        <label for="bookCoverImage" style="color:gray"><i class="layui-icon">&#xe67c;</i> (PNG file only)</label>
       </div>
       <div class="layui-form-item">
         <input type="text" name="bookTitle" value="" lay-verify="required" placeholder="Book Title" class="layui-input">
@@ -43,24 +47,25 @@ session_start();
           <option value="Reference">Reference</option>
         </select>
       </div>
-      <input type="submit" name="submit" value="Add new book" class="layui-btn layui-btn-fluid layui-bg-black">
+      <input type="submit" name="submit" value="Add new book" id="submitBtn" class="layui-btn layui-btn-fluid layui-bg-black">
     </div>
   </form>
 </div>
 
 <script>
-  layui.use('upload', function() {
-    var upload = layui.upload;
-
-    var uploadInst = upload.render({
-      elem: '#uploadBtn',
-      url: '/upload/',
-      done: function(res) {
-        //上传完毕回调
-      },
-      error: function() {
-        //请求异常回调
-      }
-    });
-  });
+  // layui.use(function() {
+  //   var upload = layui.upload;
+  //   var layer = layui.layer
+  //   // 渲染
+  //   upload.render({
+  //     elem: '#uploadBar',
+  //     url: './add_book_check.php',
+  //     accept: 'images',
+  //     exts: 'png',
+  //     done: function(res) {
+  //       layer.msg('上传成功');
+  //       console.log(res)
+  //     }
+  //   });
+  // });
 </script>
