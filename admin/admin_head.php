@@ -59,7 +59,7 @@ function limits()
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">Manage book</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="book_list.php">Book list</a></dd>
+                            <dd><a href="./admin_book_list.php">Book list</a></dd>
                             <dd><a href="add_book.php">Add new book</a></dd>
                         </dl>
                     </li>
