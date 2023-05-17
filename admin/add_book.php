@@ -51,21 +51,3 @@ session_start();
     </div>
   </form>
 </div>
-
-<script>
-  // layui.use(function() {
-  //   var upload = layui.upload;
-  //   var layer = layui.layer
-  //   // 渲染
-  //   upload.render({
-  //     elem: '#uploadBar',
-  //     url: './add_book_check.php',
-  //     accept: 'images',
-  //     exts: 'png',
-  //     done: function(res) {
-  //       layer.msg('上传成功');
-  //       console.log(res)
-  //     }
-  //   });
-  // });
-</script>
