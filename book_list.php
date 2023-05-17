@@ -20,12 +20,11 @@ $json = json_encode($books);
 $first_name = json_encode($_SESSION['firstName']);
 
 echo "<script>const bookData = $json;</script>";
+echo "<script>const firstNameData = $first_name;</script>";
 ?>
 
 <div class="main-container">
-  <div class="card-container">
-  </div>
-  <button onclick=fetchBookDate()>Book</button>
+  <div class="card-container"></div>
   <div id="book-page"></div>
 </div>
 
@@ -34,9 +33,9 @@ echo "<script>const bookData = $json;</script>";
     console.log(bookData);
   }
 
-  function renderBtn($boolean) {
-    if ($boolean) {
-      return "<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue'>Borrow</button>";
+  function renderBtn(boolean, id) {
+    if (boolean) {
+      return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${id})>Borrow</button>`;
     } else {
       return "<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Login to borrow</button>";
     }
@@ -62,9 +61,12 @@ echo "<script>const bookData = $json;</script>";
       <p>
         <span class="card__footer-text">${data.Publisher}</span>
       </p>
+      ${renderBtn(firstNameData,data.id)}
     </div>
   </div>`;
   };
+
+  // page rendering
 
   const renderPage = function(datas) {
     const container = document.querySelector(".card-container");
@@ -74,19 +76,31 @@ echo "<script>const bookData = $json;</script>";
     });
     const markup = template.join("");
 
-    container.insertAdjacentHTML("beforeend", markup)
+    container.innerHTML = markup
   }
 
+  // pagination 
   layui.use(function() {
     const laypage = layui.laypage;
 
+    const data = bookData
+
     laypage.render({
       elem: 'book-page',
-      count: 50
+      count: data.length,
+      limit: 6,
+      jump: function(obj) {
+        const thisData = data.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
+        renderPage(thisData)
+      }
     });
   });
 
-  renderPage(bookData);
+
+  // borrow book
+  function borrowBook(bookId) {
+    console.log(bookId);
+  }
 </script>
 
 <?php
