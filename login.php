@@ -11,7 +11,7 @@ include("lms-header.php");
           <div class="layui-input-prefix">
             <i class="layui-icon layui-icon-username"></i>
           </div>
-          <input type="email" name="email" value="" lay-verify="required" placeholder="Email" lay-reqtext="Please enter email" class="layui-input" lay-affix="clear">
+          <input type="email" name="email" value="" required placeholder="Email" lay-reqtext="Please enter email" class="layui-input" lay-affix="clear">
         </div>
       </div>
       <div class="layui-form-item">
@@ -19,7 +19,7 @@ include("lms-header.php");
           <div class="layui-input-prefix">
             <i class="layui-icon layui-icon-password"></i>
           </div>
-          <input type="password" name="password" value="" lay-verify="required" placeholder="Password" lay-reqtext="Please enter password" class="layui-input" lay-affix="eye">
+          <input type="password" name="password" value="" required placeholder="Password" lay-reqtext="Please enter password" class="layui-input" lay-affix="eye">
         </div>
       </div>
 

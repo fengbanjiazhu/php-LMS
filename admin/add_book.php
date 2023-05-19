@@ -15,19 +15,19 @@ session_start();
     <div class="demo-reg-container">
       <h1 class="title">Add new Book</h1>
       <div class="layui-form-item">
-        <input type="file" name="bookCoverImage" placeholder="Upload Book Cover" class="layui-input" id="uploadBar">
+        <input type="file" name="bookCoverImage" required placeholder="Upload Book Cover" class="layui-input" id="uploadBar">
         <label for="bookCoverImage" style="color:gray"><i class="layui-icon">&#xe67c;</i> (PNG file only)</label>
       </div>
       <div class="layui-form-item">
-        <input type="text" name="bookTitle" value="" lay-verify="required" placeholder="Book Title" class="layui-input">
+        <input type="text" name="bookTitle" value="" required placeholder="Book Title" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input type="text" name="Author" value="" lay-verify="required" placeholder="Author" class="layui-input">
+        <input type="text" name="Author" value="" required placeholder="Author" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input type="text" name="Publisher" value="" placeholder="Publisher" class="layui-input">
+        <input type="text" name="Publisher" value="" required placeholder="Publisher" class="layui-input">
       </div>
-      <div class="layui-form-item" name="Language">
+      <div class="layui-form-item" name="Language" required>
         <select lay-search="" name="Language">
           <option value="">please select Language</option>
           <option value="English">English</option>
@@ -39,7 +39,7 @@ session_start();
           <option value="Other">Other</option>
         </select>
       </div>
-      <div class="layui-form-item" name="Category">
+      <div class="layui-form-item" name="Category" required>
         <select lay-search="" name="Category">
           <option value="">please select Category</option>
           <option value="Fiction">Fiction</option>

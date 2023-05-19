@@ -7,22 +7,22 @@ include("lms-header.php");
     <div class="demo-reg-container">
       <h1>Sign up</h1>
       <div class="layui-form-item">
-        <input type="text" name="username" value="" lay-verify="required" placeholder="Username" autocomplete="off" class="layui-input">
+        <input type="text" name="username" value="" required placeholder="Username" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input type="text" name="firstName" value="" lay-verify="required" placeholder="First Name" autocomplete="off" class="layui-input">
+        <input type="text" name="firstName" value="" required placeholder="First Name" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input type="text" name="lastName" value="" lay-verify="required" placeholder="Last Name" autocomplete="off" class="layui-input">
+        <input type="text" name="lastName" value="" required placeholder="Last Name" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input id="regEmail" type="email" name="email" value="" lay-verify="required" placeholder="Email Address" autocomplete="off" class="layui-input">
+        <input id="regEmail" type="email" name="email" value="" required placeholder="Email Address" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input type="password" name="password" value="" lay-verify="required" placeholder="password" autocomplete="off" class="layui-input" lay-affix="eye">
+        <input type="password" name="password" value="" required placeholder="password" autocomplete="off" class="layui-input" lay-affix="eye">
       </div>
       <div class="layui-form-item">
-        <input type="password" name="passwordConfirm" value="" lay-verify="required" placeholder="Password Confirm" autocomplete="off" class="layui-input" lay-affix="eye">
+        <input type="password" name="passwordConfirm" value="" required placeholder="Password Confirm" autocomplete="off" class="layui-input" lay-affix="eye">
       </div>
 
       <input type="submit" name="submit" value="Register" class="layui-btn layui-btn-fluid layui-bg-blue">

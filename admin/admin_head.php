@@ -1,16 +1,5 @@
 <?php
-include("../conn.php");
-
-session_start();
-
-if (!isset($_SESSION['email'])) {
-    alert('Please login first', '../login.php');
-}
-
-if ($_SESSION['member_type'] !== 'Admin') {
-    alert('Your member type have no access to this page', '../index.php');
-}
-
+include("./admin_auth.php");
 
 function limits()
 {
@@ -48,7 +37,7 @@ function limits()
                 <li class="layui-nav-item layui-hide-xs"><a href="../index.php">Member site</a></li>
             </ul>
             <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item layui-hide-xs"><a href="../logout.php">Logout</a></li>
+                <li class="layui-nav-item layui-hide-xs"><a href="../functions/logout.php">Logout</a></li>
             </ul>
         </div>
 
@@ -59,7 +48,7 @@ function limits()
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">Manage book</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="./manage_book.php">Manage Books</a></dd>
+                            <dd><a href="./edit_book.php">Edit Books</a></dd>
                             <dd><a href="add_book.php">Add New Book</a></dd>
                         </dl>
                     </li>

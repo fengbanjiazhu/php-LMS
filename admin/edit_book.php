@@ -22,6 +22,7 @@ session_start();
 </div>
 
 <script>
+  let clickedBookData;
   const createMarkup = function(data) {
     return `<div class="card">
     <div class="card__header">
@@ -42,7 +43,7 @@ session_start();
       <p>
         <span class="card__footer-text">${data.Publisher}</span>
       </p>
-      <button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' lay-on='test-page-custom' data-bookId='${data.id}'>Manage</button>
+      <button type='button' class='layui-btn layui-btn-fluid layui-bg-black' lay-on='test-page-custom' onclick=setClickedBookData(${data.id})>Manage</button>
     </div>
   </div>`;
   };
@@ -63,9 +64,7 @@ session_start();
   // pagination 
   layui.use(function() {
     const laypage = layui.laypage;
-
     const data = bookData
-
     laypage.render({
       elem: 'book-page',
       count: data.length,
@@ -78,10 +77,13 @@ session_start();
   });
 
 
-  // borrow book
-  // function manageBook(bookId) {
-  //   console.log(bookId);
-  // }
+  // set book id
+  function setClickedBookData(id) {
+    bookData.forEach(el => {
+      if (el.id * 1 !== id) return;
+      clickedBookData = el;
+    })
+  }
 
 
   layui.use(function() {
@@ -92,6 +94,7 @@ session_start();
 
     util.on('lay-on', {
       'test-page-custom': function() {
+        console.log(clickedBookData);
         layer.open({
           type: 1,
           area: ['400px', '450px'],
@@ -99,22 +102,22 @@ session_start();
           shadeClose: true,
           title: 'Edit Book Detail',
           content: `
-          <form class="layui-form" action="./manage_book_check.php" method="post" enctype="multipart/form-data">
+          <form class="layui-form" action="./edit_book_check.php" method="post" enctype="multipart/form-data">
             <div class="demo-reg-container">
               <div class="layui-form-item">
-                <input type="number" name="bookTitle" value="" lay-verify="required" placeholder="Book Title" class="layui-input">
+                <input type="number" name="bookId" value="${clickedBookData.id}" readonly class="layui-input">
               </div>
               <div class="layui-form-item">
-                <input type="text" name="bookTitle" value="" lay-verify="required" placeholder="Book Title" class="layui-input">
+                <input type="text" name="bookTitle" value="${clickedBookData.title}" required placeholder="Book Title" class="layui-input">
               </div>
               <div class="layui-form-item">
-                <input type="text" name="Author" value="" lay-verify="required" placeholder="Author" class="layui-input">
+                <input type="text" name="Author" value="${clickedBookData.Author}" required placeholder="Author" class="layui-input">
               </div>
               <div class="layui-form-item">
-                <input type="text" name="Publisher" value="" placeholder="Publisher" class="layui-input">
+                <input type="text" name="Publisher" value="${clickedBookData.Publisher}" required placeholder="Publisher" class="layui-input">
               </div>
               <div class="layui-form-item" name="Language">
-                <select lay-search="" name="Language">
+                <select lay-search="" name="Language" lay-verify="required">
                   <option value="">please select Language</option>
                   <option value="English">English</option>
                   <option value="French">French</option>
@@ -126,29 +129,32 @@ session_start();
                 </select>
               </div>
               <div class="layui-form-item" name="Category">
-                <select lay-search="" name="Category">
+                <select lay-search="" name="Category" lay-verify="required">
                   <option value="">please select Category</option>
                   <option value="Fiction">Fiction</option>
                   <option value="Nonfiction">Nonfiction</option>
                   <option value="Reference">Reference</option>
                 </select>
               </div>
-              <input type="submit" name="submit" value="Add new book" id="submitBtn" class="layui-btn layui-btn-fluid layui-bg-black">
+              <button class="layui-btn layui-btn-fluid layui-bg-black" id="submitBtn" lay-submit lay-filter="submit-change">Edit Book Detail</button>
             </div>
           </form>
         `,
           success: function() {
             form.render();
-            console.log(this);
-            // 表单提交事件
-            form.on('submit(demo-login)', function(data) {
-              const field = data.field;
-              layer.alert(JSON.stringify(field), {
-                title: '当前填写的字段值'
-              });
-              // 此处可执行 Ajax 等操作
+            form.on('submit(submit-change)', async function(data) {
+              try {
+                const res = await fetch('edit_book_check.php', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    field
+                  })
+                });
+                console.log(res);
+              } catch (error) {
 
-              return false; // 阻止默认 form 跳转
+              }
+              return false;
             });
           }
         });
