@@ -26,9 +26,6 @@ $imgName = "book_$book_id.png";
 $tmp = $_FILES['bookCoverImage']['tmp_name'];
 $filepath = '../public/images/book-image/';
 
-// if (！is_writable($filepath)) {
-//   echo "<script>alert('Not able to write file')</script>";
-// };
 
 $tmpFilePath = $_FILES['bookCoverImage']['tmp_name'];
 echo "<script>console.log('Temporary file path:','$tmpFilePath')</script>";

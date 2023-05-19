@@ -43,12 +43,10 @@ session_start();
       <p>
         <span class="card__footer-text">${data.Publisher}</span>
       </p>
-      <button type='button' class='layui-btn layui-btn-fluid layui-bg-black' lay-on='test-page-custom' onclick=setClickedBookData(${data.id})>Manage</button>
+      <button type='button' class='layui-btn layui-btn-fluid layui-bg-black' lay-on='test-page-custom' onclick=setClickedBookData(${data.id})>Edit</button>
     </div>
   </div>`;
   };
-  // onclick=manageBook(${data.id})
-  // page rendering
 
   const renderPage = function(datas) {
     const container = document.querySelector(".card-container");
@@ -76,15 +74,13 @@ session_start();
     });
   });
 
-
-  // set book id
+  // set clicked book data
   function setClickedBookData(id) {
     bookData.forEach(el => {
       if (el.id * 1 !== id) return;
       clickedBookData = el;
     })
   }
-
 
   layui.use(function() {
     const $ = layui.$;
@@ -94,7 +90,6 @@ session_start();
 
     util.on('lay-on', {
       'test-page-custom': function() {
-        console.log(clickedBookData);
         layer.open({
           type: 1,
           area: ['400px', '450px'],
@@ -142,20 +137,6 @@ session_start();
         `,
           success: function() {
             form.render();
-            form.on('submit(submit-change)', async function(data) {
-              try {
-                const res = await fetch('edit_book_check.php', {
-                  method: 'POST',
-                  body: JSON.stringify({
-                    field
-                  })
-                });
-                console.log(res);
-              } catch (error) {
-
-              }
-              return false;
-            });
           }
         });
       }

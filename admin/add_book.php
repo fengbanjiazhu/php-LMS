@@ -15,7 +15,7 @@ session_start();
     <div class="demo-reg-container">
       <h1 class="title">Add new Book</h1>
       <div class="layui-form-item">
-        <input type="file" name="bookCoverImage" required placeholder="Upload Book Cover" class="layui-input" id="uploadBar">
+        <input type="file" name="bookCoverImage" accept=".png" required placeholder="Upload Book Cover" class="layui-input" id="uploadBar">
         <label for="bookCoverImage" style="color:gray"><i class="layui-icon">&#xe67c;</i> (PNG file only)</label>
       </div>
       <div class="layui-form-item">
@@ -27,8 +27,8 @@ session_start();
       <div class="layui-form-item">
         <input type="text" name="Publisher" value="" required placeholder="Publisher" class="layui-input">
       </div>
-      <div class="layui-form-item" name="Language" required>
-        <select lay-search="" name="Language">
+      <div class="layui-form-item" name="Language">
+        <select lay-search="" name="Language" required>
           <option value="">please select Language</option>
           <option value="English">English</option>
           <option value="French">French</option>
@@ -39,8 +39,8 @@ session_start();
           <option value="Other">Other</option>
         </select>
       </div>
-      <div class="layui-form-item" name="Category" required>
-        <select lay-search="" name="Category">
+      <div class="layui-form-item" name="Category">
+        <select lay-search="" name="Category" required>
           <option value="">please select Category</option>
           <option value="Fiction">Fiction</option>
           <option value="Nonfiction">Nonfiction</option>
