@@ -9,6 +9,10 @@ session_start();
     padding: 1rem;
     text-align: center;
   }
+
+  .layui-btn+.layui-btn {
+    margin: 10px 0 10px 0;
+  }
 </style>
 
 <div class="layui-body  fixPadding">
@@ -43,7 +47,8 @@ session_start();
       <p>
         <span class="card__footer-text">${data.Publisher}</span>
       </p>
-      <button type='button' class='layui-btn layui-btn-fluid layui-bg-black' lay-on='test-page-custom' onclick=setClickedBookData(${data.id})>Edit</button>
+      <button type='button' class='layui-btn layui-bg-black layui-btn-fluid' lay-on='edit_book' onclick=setClickedBookData(${data.id})>Edit</button>
+      <button type='button' class='layui-btn layui-btn-danger layui-btn-fluid' lay-on='delete_book' onclick=setClickedBookData(${data.id})>Delete</button>
     </div>
   </div>`;
   };
@@ -89,7 +94,7 @@ session_start();
     const form = layui.form;
 
     util.on('lay-on', {
-      'test-page-custom': function() {
+      'edit_book': function() {
         layer.open({
           type: 1,
           area: ['400px', '450px'],
@@ -132,6 +137,29 @@ session_start();
                 </select>
               </div>
               <button class="layui-btn layui-btn-fluid layui-bg-black" id="submitBtn" lay-submit lay-filter="submit-change">Edit Book Detail</button>
+            </div>
+          </form>
+        `,
+          success: function() {
+            form.render();
+          }
+        });
+      },
+
+      'delete_book': function() {
+        layer.open({
+          type: 1,
+          area: ['400px', '200px'],
+          resize: false,
+          shadeClose: true,
+          title: 'Are you sure to delete this book?',
+          content: `
+          <form class="layui-form" action="./delete_book_check.php" method="post">
+            <div class="demo-reg-container">
+              <div class="layui-form-item">
+                <input type="number" name="bookId" value="${clickedBookData.id}" readonly class="layui-input">
+              </div>
+              <button class="layui-btn layui-btn-fluid layui-btn-danger" id="submitBtn" lay-submit lay-filter="submit-change">Yes, Delete</button>
             </div>
           </form>
         `,

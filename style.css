@@ -31,6 +31,7 @@ body {
 }
 
 .card {
+  min-width: 200px;
   border-radius: 3px;
   overflow: hidden;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
@@ -85,6 +86,10 @@ body {
   display: flex;
   align-items: center;
 }
+.card__footer {
+  margin-bottom: 10px;
+}
+
 .card__footer button {
   margin-top: 0.5rem;
 }
