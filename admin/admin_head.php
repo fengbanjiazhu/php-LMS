@@ -46,17 +46,18 @@ function limits()
                 <!-- left nav bar  -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
                     <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">Manage book</a>
+                        <a class="" href="javascript:;">Manage Book</a>
                         <dl class="layui-nav-child">
                             <dd><a href="./edit_book.php">Manage Books</a></dd>
                             <dd><a href="add_book.php">Add New Book</a></dd>
+                            <dd><a href="#">Manage return</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;">Manage user</a>
+                        <a href="javascript:;">Manage User</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="user_list.php">user list</a></dd>
-                            <dd><a href="user_new.php">change user info</a></dd>
+                            <dd><a href="user_list.php">User List</a></dd>
+                            <dd><a href="edit_user.php">Change User Info</a></dd>
                         </dl>
                     </li>
                 </ul>
