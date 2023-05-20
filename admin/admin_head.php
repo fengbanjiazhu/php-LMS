@@ -48,7 +48,7 @@ function limits()
                     <li class="layui-nav-item layui-nav-itemed">
                         <a class="" href="javascript:;">Manage book</a>
                         <dl class="layui-nav-child">
-                            <dd><a href="./edit_book.php">Edit Books</a></dd>
+                            <dd><a href="./edit_book.php">Manage Books</a></dd>
                             <dd><a href="add_book.php">Add New Book</a></dd>
                         </dl>
                     </li>

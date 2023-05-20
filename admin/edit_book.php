@@ -149,7 +149,7 @@ session_start();
       'delete_book': function() {
         layer.open({
           type: 1,
-          area: ['400px', '200px'],
+          area: ['400px', '250px'],
           resize: false,
           shadeClose: true,
           title: 'Are you sure to delete this book?',
@@ -158,6 +158,9 @@ session_start();
             <div class="demo-reg-container">
               <div class="layui-form-item">
                 <input type="number" name="bookId" value="${clickedBookData.id}" readonly class="layui-input">
+              </div>
+              <div class="layui-form-item">
+                <input type="text" name="bookTitle" value="${clickedBookData.title.toUpperCase()}" readonly placeholder="Book Title" class="layui-input">
               </div>
               <button class="layui-btn layui-btn-fluid layui-btn-danger" id="submitBtn" lay-submit lay-filter="submit-change">Yes, Delete</button>
             </div>
