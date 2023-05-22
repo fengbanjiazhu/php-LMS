@@ -21,6 +21,7 @@ if (!$res) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+// save image for book
 $book_id =  mysqli_insert_id($conn);
 $imgName = "book_$book_id.png";
 $tmp = $_FILES['bookCoverImage']['tmp_name'];
@@ -32,7 +33,21 @@ echo "<script>console.log('Temporary file path:','$tmpFilePath')</script>";
 
 if (move_uploaded_file($tmp, $filepath . $imgName)) {
   echo "Successfully Added book";
-  alert('added successfully', 'add_book.php');
 } else {
   echo "<script>alert('Failed to save image')</script>";
 };
+
+// create book status
+$create_datetime = date("Y-m-d H:i:s");
+
+$sql = "INSERT INTO book_status ( Book_id,  Applied_date) 
+VALUES ( '$book_id', '$create_datetime')";
+
+$res = mysqli_query($conn, $sql);
+
+if (!$res) {
+  alert('Fail to create book status, Please contact admin', 'add_book.php');
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+alert('added successfully', 'add_book.php');

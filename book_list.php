@@ -1,6 +1,7 @@
 <?php
 include("lms-header.php");
 include("./functions/getAllBook.php");
+include("./functions/checkBookStatus.php");
 ?>
 
 <div class="main-container">
@@ -9,9 +10,9 @@ include("./functions/getAllBook.php");
 </div>
 
 <script>
-  function fetchBookDate() {
-    console.log(bookData);
-  }
+  function fetchBookDate() {}
+  console.log(bookData);
+  console.log(bookStatusData);
 
   function renderBtn(boolean, id) {
     if (boolean) {
