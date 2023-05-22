@@ -2,7 +2,7 @@
 $sql = "SELECT * FROM book_status";
 $res = mysqli_query($conn, $sql);
 
-$books = array();
+$status = array();
 while ($row = mysqli_fetch_assoc($res)) {
   $bookStatus = [
     'bookId' => $row["Book_id"],
@@ -10,10 +10,9 @@ while ($row = mysqli_fetch_assoc($res)) {
     'Status' => $row["Status"],
     'appliedDate' => $row["Applied_date"],
   ];
-  $books[] = $book;
+  $status[] = $bookStatus;
 }
-$json = json_encode($books);
+$json = json_encode($status);
 // $first_name = json_encode($_SESSION['firstName']);
 
 echo "<script>const bookStatusData = $json;</script>";
-// echo "<script>const firstNameData = $first_name;</script>";

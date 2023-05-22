@@ -81,10 +81,7 @@ session_start();
 
   // set clicked book data
   function setClickedBookData(id) {
-    bookData.forEach(el => {
-      if (el.id * 1 !== id) return;
-      clickedBookData = el;
-    })
+    clickedBookData = bookData.find(el => el.id * 1 === id)
   }
 
   layui.use(function() {

@@ -29,14 +29,7 @@ session_start();
       <?php
       if ($_SESSION['firstName']) {
         echo "<li class='layui-nav-item'><a href='./add_book.php'>Browse new book</a></li>";
-        echo "<li class='layui-nav-item'>
-        <a href='javascript:;'>More</a>
-        <dl class='layui-nav-child'>
-        <dd><a href='add_book_member.php'>Add new book</a></dd>
-        <dd><a href=''>option 2</a></dd>
-        <dd><a href=''>option 3</a></dd>
-        </dl>
-        </li>";
+        echo "<li class='layui-nav-item'><a href='./my_books.php'>My books</a></li>";
         echo "<li class='layui-nav-item'><a href='./functions/logout.php'>logout</a></li>";
       } else {
         echo "<li class='layui-nav-item'><a href='./login.php'>login</a></li>";

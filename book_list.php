@@ -2,6 +2,7 @@
 include("lms-header.php");
 include("./functions/getAllBook.php");
 include("./functions/checkBookStatus.php");
+
 ?>
 
 <div class="main-container">
@@ -16,7 +17,13 @@ include("./functions/checkBookStatus.php");
 
   function renderBtn(boolean, id) {
     if (boolean) {
-      return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${id})>Borrow</button>`;
+      // 
+      const bookStatus = bookStatusData.find(el => el.bookId = id)
+      if (bookStatus.Status === "Available") {
+        return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${id})>Borrow</button>`;
+      } else {
+        return `<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Sorry, someone else is reading this book</button>`;
+      }
     } else {
       return "<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Login to borrow</button>";
     }
