@@ -1,12 +1,11 @@
 <?php
-include('./admin_head.php');
-
+include('./loginAuth.php');
 
 
 // book info
 $bookTitle = $_POST['bookTitle'];
 $Author = $_POST['Author'];
-$Publisher = $_POST['Publisher'];
+$Publisher = $_SESSION['firstName'];
 $Language = $_POST['Language'];
 $Category = $_POST['Category'];
 
@@ -17,7 +16,7 @@ VALUES ( '$bookTitle', '$Author', '$Publisher', '$Language', '$Category')";
 $res = mysqli_query($conn, $sql);
 
 if (!$res) {
-  alert('Something went wrong, Please try again', 'add_book.php');
+  alert('Something went wrong, Please try again', '../add_book.php');
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
@@ -46,8 +45,8 @@ VALUES ( '$book_id', '$create_datetime')";
 $res = mysqli_query($conn, $sql);
 
 if (!$res) {
-  alert('Fail to create book status, Please contact admin', 'add_book.php');
+  alert('Fail to create book status, Please contact admin', '../add_book.php');
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-alert('added successfully', 'add_book.php');
+alert('added successfully', '../add_book.php');
