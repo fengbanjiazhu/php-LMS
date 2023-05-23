@@ -17,7 +17,7 @@ $row = mysqli_fetch_assoc($res);
 $password_hash = $row['password'];
 $type = $row['Member_type'];
 $firstName = $row['first_name'];
-$memberId = $row['$Member_id'];
+$memberId = $row['Member_id'];
 
 
 if (!password_verify($password, $password_hash)) {

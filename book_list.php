@@ -3,6 +3,8 @@ include("lms-header.php");
 include("./functions/getAllBook.php");
 include("./functions/checkBookStatus.php");
 
+$memberId = json_encode($_SESSION['member_id']);
+echo "<script>const currentUserId = $memberId;</script>";
 ?>
 
 <div class="main-container">
@@ -11,16 +13,12 @@ include("./functions/checkBookStatus.php");
 </div>
 
 <script>
-  function fetchBookDate() {}
-  console.log(bookData);
-  console.log(bookStatusData);
-
-  function renderBtn(boolean, id) {
-    if (boolean) {
+  function renderBtn(userId, bookId) {
+    if (userId) {
       // 
-      const bookStatus = bookStatusData.find(el => el.bookId = id)
+      const bookStatus = bookStatusData.find(el => el.bookId === bookId)
       if (bookStatus.Status === "Available") {
-        return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${id})>Borrow</button>`;
+        return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${bookId})>Borrow</button>`;
       } else {
         return `<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Sorry, someone else is reading this book</button>`;
       }
@@ -49,7 +47,7 @@ include("./functions/checkBookStatus.php");
       <p>
         <span class="card__footer-text">${data.Publisher}</span>
       </p>
-      ${renderBtn(firstNameData,data.id)}
+      ${renderBtn(currentUserId,data.id)}
     </div>
   </div>`;
   };
@@ -86,8 +84,20 @@ include("./functions/checkBookStatus.php");
 
 
   // borrow book
-  function borrowBook(bookId) {
-    console.log(bookId);
+  async function borrowBook(bookId) {
+    const bodyData = {
+      bookId
+    };
+    const res = await fetch("./functions/borrow_check.php", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyData),
+    })
+    const data = await res.json()
+    console.log(res);
+    console.log(data);
   }
 </script>
 
