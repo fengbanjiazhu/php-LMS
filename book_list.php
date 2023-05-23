@@ -20,7 +20,7 @@ echo "<script>const currentUserId = $memberId;</script>";
       if (bookStatus.Status === "Available") {
         return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${bookId})>Borrow</button>`;
       } else {
-        return `<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Sorry, someone else is reading this book</button>`;
+        return `<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Someone is reading this book</button>`;
       }
     } else {
       return "<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Login to borrow</button>";
@@ -95,9 +95,8 @@ echo "<script>const currentUserId = $memberId;</script>";
       },
       body: JSON.stringify(bodyData),
     })
-    const data = await res.json()
-    console.log(res);
-    console.log(data);
+    // const data = await res.text()
+    // console.log(data);
   }
 </script>
 

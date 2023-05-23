@@ -11,11 +11,7 @@ include("./functions/loginAuth.php");
 </div>
 
 <script>
-  console.log(bookStatusData);
-  console.log(bookData);
-  const myBookId = bookStatusData.find(el => el.memberId === currentUserId);
-  console.log(myBookId);
-  // const myBookData = bookData.find();
+  let myBookData;
 
   const createMarkup = function(data) {
     return `<div class="card">
@@ -50,9 +46,19 @@ include("./functions/loginAuth.php");
       template.push(createMarkup(data));
     });
     const markup = template.join("");
-
     container.innerHTML = markup
   };
 
-  // renderPage(thisData);
+
+  const myBookStatus = bookStatusData.find(el => el.memberId === currentUserId);
+  if (myBookStatus) {
+    myBookData = [];
+    bookData.forEach(el => {
+      if (el.id * 1 === myBookStatus.bookId * 1) myBookData.push(el)
+    })
+    renderPage(myBookData)
+  } else {
+    const mainContainer = document.querySelector(".main-container");
+    mainContainer.innerHTML = `<h1> You have not borrow any book yet, it's time to borrow one! </h1>`
+  };
 </script>
