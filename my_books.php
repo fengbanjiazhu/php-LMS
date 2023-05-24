@@ -12,6 +12,7 @@ include("./functions/loginAuth.php");
 
 <script>
   let myBookData;
+  console.log(bookStatusData);
 
   const createMarkup = function(data) {
     return `<div class="card">
@@ -50,12 +51,12 @@ include("./functions/loginAuth.php");
   };
 
 
-  const myBookStatus = bookStatusData.find(el => el.memberId === currentUserId);
+  const myBookStatus = bookStatusData.filter(el => el.memberId === currentUserId);
+  console.log(myBookStatus);
   if (myBookStatus) {
-    myBookData = [];
-    bookData.forEach(el => {
-      if (el.id * 1 === myBookStatus.bookId * 1) myBookData.push(el)
-    })
+    // A.filter(item => B.some(bItem => bItem.id === item.id))
+    myBookData = bookData.filter(book => myBookStatus.some(bookStatus => bookStatus.bookId * 1 === book.id * 1));
+
     renderPage(myBookData)
   } else {
     const mainContainer = document.querySelector(".main-container");

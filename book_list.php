@@ -95,8 +95,13 @@ echo "<script>const currentUserId = $memberId;</script>";
       },
       body: JSON.stringify(bodyData),
     })
-    // const data = await res.text()
-    // console.log(data);
+
+    console.log(res);
+    if (res.ok === true) {
+      alert("successful borrowed a book!")
+    } else {
+      alert("Please try again later")
+    };
   }
 </script>
 
