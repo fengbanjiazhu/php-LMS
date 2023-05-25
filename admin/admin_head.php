@@ -49,7 +49,7 @@ function limits()
                         <a class="" href="javascript:;">Manage Book</a>
                         <dl class="layui-nav-child">
                             <dd><a href="./edit_book.php">Manage Books</a></dd>
-                            <dd><a href="./add_book_admin.php">Add New Book</a></dd>
+                            <dd><a href="../add_book.php">Add New Book</a></dd>
                             <dd><a href="#">Manage return</a></dd>
                         </dl>
                     </li>

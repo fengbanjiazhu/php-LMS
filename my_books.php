@@ -56,7 +56,6 @@ include("./functions/loginAuth.php");
   if (myBookStatus) {
     // A.filter(item => B.some(bItem => bItem.id === item.id))
     myBookData = bookData.filter(book => myBookStatus.some(bookStatus => bookStatus.bookId * 1 === book.id * 1));
-
     renderPage(myBookData)
   } else {
     const mainContainer = document.querySelector(".main-container");
