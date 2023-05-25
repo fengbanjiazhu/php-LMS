@@ -1,4 +1,6 @@
 <?php
+// include("../admin/admin_head.php");
+
 $sql = "SELECT * FROM users";
 $res = mysqli_query($conn, $sql);
 

@@ -1,7 +1,6 @@
 <?php
 include("./admin_head.php");
 include("../functions/getAllBook.php");
-session_start();
 
 ?>
 <style>
