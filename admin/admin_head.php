@@ -1,5 +1,8 @@
 <?php
 include("./admin_auth.php");
+include("./functions/getAllBook.php");
+include("./functions/checkBookStatus.php");
+
 
 function limits()
 {
@@ -49,8 +52,8 @@ function limits()
                         <a class="" href="javascript:;">Manage Book</a>
                         <dl class="layui-nav-child">
                             <dd><a href="./edit_book.php">Manage Books</a></dd>
+                            <dd><a href="./return_book_list.php">Manage return</a></dd>
                             <dd><a href="../add_book.php">Add New Book</a></dd>
-                            <dd><a href="#">Manage return</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
