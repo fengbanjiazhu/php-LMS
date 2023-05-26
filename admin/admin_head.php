@@ -48,7 +48,7 @@ function limits()
             <div class="layui-side-scroll">
                 <!-- left nav bar  -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                    <li class="layui-nav-item layui-nav-itemed">
+                    <li class="layui-nav-item  layui-nav-itemed">
                         <a class="" href="javascript:;">Manage Book</a>
                         <dl class="layui-nav-child">
                             <dd><a href="./edit_book.php">Manage Books</a></dd>
@@ -56,11 +56,10 @@ function limits()
                             <dd><a href="../add_book.php">Add New Book</a></dd>
                         </dl>
                     </li>
-                    <li class="layui-nav-item">
+                    <li class="layui-nav-item  layui-nav-itemed">
                         <a href="javascript:;">Manage User</a>
                         <dl class="layui-nav-child">
                             <dd><a href="user_list.php">User List</a></dd>
-                            <dd><a href="edit_user.php">Change User Info</a></dd>
                         </dl>
                     </li>
                 </ul>

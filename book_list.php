@@ -17,10 +17,11 @@ echo "<script>const currentUserId = $memberId;</script>";
     if (userId) {
       // 
       const bookStatus = bookStatusData.find(el => el.bookId === bookId)
-      if (bookStatus.Status === "Available") {
+      const borrowedBook = bookStatusData.filter(book => book.memberId === currentUserId)
+      if (bookStatus.Status === "Available" && borrowedBook.length < 2) {
         return `<button type='button' class='layui-btn layui-btn-fluid layui-bg-blue' onclick=borrowBook(${bookId})>Borrow</button>`;
       } else {
-        return `<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Someone is reading this book</button>`;
+        return `<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>On-loan or limit reached</button>`;
       }
     } else {
       return "<button type='button' class='layui-btn layui-btn-fluid layui-btn-disabled'>Login to borrow</button>";
