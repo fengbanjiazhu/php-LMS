@@ -74,6 +74,11 @@ include("../functions/getAllBook.php");
       jump: function(obj) {
         const thisData = data.concat().splice(obj.curr * obj.limit - obj.limit, obj.limit);
         renderPage(thisData)
+
+        const nextBtn = document.querySelector(".layui-laypage-next")
+        const prevBtn = document.querySelector(".layui-laypage-prev")
+        nextBtn.innerHTML = "Next"
+        prevBtn.innerHTML = "Prev"
       }
     });
   });

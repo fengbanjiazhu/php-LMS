@@ -13,8 +13,6 @@ include("../functions/getAllBook.php");
 
 <script>
   let myBookData;
-  console.log(bookStatusData);
-
   const createMarkup = function(data) {
     return `<div class="card">
     <div class="card__header">
@@ -54,8 +52,7 @@ include("../functions/getAllBook.php");
 
 
   const onLoanBooks = bookStatusData.filter(el => el.Status === "On-loan");
-  console.log(onLoanBooks);
-  if (onLoanBooks) {
+  if (onLoanBooks?.length > 0) {
     myBookData = bookData.filter(book => onLoanBooks.some(bookStatus => bookStatus.bookId * 1 === book.id * 1));
     renderPage(myBookData)
   } else {
@@ -64,7 +61,6 @@ include("../functions/getAllBook.php");
   };
 
   const returnBook = async function(bookId) {
-    // console.log(bookId);
     const bodyData = {
       bookId
     };
@@ -76,7 +72,6 @@ include("../functions/getAllBook.php");
       body: JSON.stringify(bodyData),
     })
 
-    console.log(res);
     if (res.ok === true) {
       alert("successful return a book!")
       location.reload()

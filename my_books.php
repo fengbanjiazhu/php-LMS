@@ -12,8 +12,6 @@ include("./functions/loginAuth.php");
 
 <script>
   let myBookData;
-  console.log(bookStatusData);
-
   const createMarkup = function(data) {
     return `<div class="card">
     <div class="card__header">
@@ -52,9 +50,7 @@ include("./functions/loginAuth.php");
 
 
   const myBookStatus = bookStatusData.filter(el => el.memberId === currentUserId);
-  console.log(myBookStatus);
-  if (myBookStatus) {
-    // A.filter(item => B.some(bItem => bItem.id === item.id))
+  if (myBookStatus?.length > 0) {
     myBookData = bookData.filter(book => myBookStatus.some(bookStatus => bookStatus.bookId * 1 === book.id * 1));
     renderPage(myBookData)
   } else {

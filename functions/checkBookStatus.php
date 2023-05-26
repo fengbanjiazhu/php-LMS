@@ -1,5 +1,4 @@
 <?php
-include("../conn.php");
 
 $current_datetime = date("Y-m-d H:i:s");
 
