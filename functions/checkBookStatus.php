@@ -4,7 +4,7 @@ $current_datetime = date("Y-m-d H:i:s");
 
 $sql = "UPDATE book_status
 SET Member_id=null, Status='Available', Applied_date='$current_datetime'
-WHERE Applied_date <= now() - INTERVAL 7 day";
+WHERE Status='On-loan' AND Applied_date <= now() - INTERVAL 7 day";
 
 mysqli_query($conn, $sql);
 
