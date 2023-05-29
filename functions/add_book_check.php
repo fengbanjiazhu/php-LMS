@@ -1,6 +1,5 @@
 <?php
-include('./loginAuth.php');
-
+include("./admin_head.php");
 
 // book info
 $bookTitle = $_POST['bookTitle'];
