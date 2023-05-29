@@ -19,7 +19,9 @@ include("lms-header.php");
         <input id="regEmail" type="email" name="email" value="" required placeholder="Email Address" autocomplete="off" class="layui-input">
       </div>
       <div class="layui-form-item">
-        <input type="password" name="password" value="" required placeholder="password" autocomplete="off" class="layui-input" lay-affix="eye">
+        <input type="password" name="password" lay-verify="pass" value="" required placeholder="password" autocomplete="off" class="layui-input" lay-affix="eye">
+        <div class="layui-form-mid layui-word-aux">Must between 8-15 character, 1 uppercase,</div>
+        <div class="layui-form-mid layui-word-aux">1 lowercase and 1 special character </div>
       </div>
       <div class="layui-form-item">
         <input type="password" name="passwordConfirm" value="" required placeholder="Password Confirm" autocomplete="off" class="layui-input" lay-affix="eye">
@@ -30,6 +32,17 @@ include("lms-header.php");
     </div>
   </form>
 </div>
+
+<script>
+  // layui.use(function() {
+  //   var form = layui.form;
+  //   form.verify({
+  //     pass: [
+  //       /(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,15}).*$/g, 'Password must between 8-15, at least include 1 uppercase, 1 lowercase, 1 special character'
+  //     ]
+  //   });
+  // })
+</script>
 <?php
 include('./footer.php');
 ?>

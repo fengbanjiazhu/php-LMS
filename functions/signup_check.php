@@ -13,8 +13,8 @@ $create_datetime = date("Y-m-d H:i:s");
 $sql = "SELECT * FROM users WHERE email = '$email'";
 $res = mysqli_query($conn, $sql);
 
-$pattern = "/(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,}).*$/g";
-$passwordCheck = preg_match($pattern, $str); // Outputs 1
+$pattern = '/(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,15}).*$/';
+$passwordCheck = preg_match($pattern, $password);
 
 
 if (mysqli_num_rows($res) > 0) {
@@ -22,10 +22,11 @@ if (mysqli_num_rows($res) > 0) {
     exit();
 }
 
-if ($passwordCheck < 1) {
-    alert('Password must include 1 uppercase 1 lower case, 1 special character and between 8-15, ', '../signup.php');
+if (!$passwordCheck) {
+    alert("Password must include 1 uppercase 1 lower case, 1 special character and between 8-15: $password, ", '../signup.php');
     exit();
 }
+
 if ($password != $passwordConfirm) {
     alert('The password and confirm are not the same', '../signup.php');
     exit();
