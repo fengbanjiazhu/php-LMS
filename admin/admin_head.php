@@ -33,7 +33,6 @@ function limits()
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
             <div class="layui-logo layui-hide-xs layui-bg-black">LMS</div>
-
             <!-- header-->
             <ul class="layui-nav layui-layout-left">
                 <li class="layui-nav-item layui-hide-xs"><a href="index.php">Home</a></li>
@@ -53,7 +52,7 @@ function limits()
                         <dl class="layui-nav-child">
                             <dd><a href="./edit_book.php">Manage Books</a></dd>
                             <dd><a href="./return_book_list.php">Manage return</a></dd>
-                            <dd><a href="../add_book.php">Add New Book</a></dd>
+                            <dd><a href="./add_book.php">Add New Book</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item  layui-nav-itemed">

@@ -28,7 +28,7 @@ session_start();
 
       <?php
       if ($_SESSION['firstName']) {
-        echo "<li class='layui-nav-item'><a href='./add_book.php'>Browse new book</a></li>";
+        // echo "<li class='layui-nav-item'><a href='./add_book.php'>Add new book</a></li>";
         echo "<li class='layui-nav-item'><a href='./my_books.php'>My books</a></li>";
         echo "<li class='layui-nav-item'><a href='./functions/logout.php'>logout</a></li>";
       } else {
