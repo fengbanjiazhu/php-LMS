@@ -15,7 +15,7 @@ VALUES ( '$bookTitle', '$Author', '$Publisher', '$Language', '$Category')";
 $res = mysqli_query($conn, $sql);
 
 if (!$res) {
-  alert('Something went wrong, Please try again', '../add_book.php');
+  alert('Something went wrong, Please try again', '../admin/add_book.php');
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
@@ -44,10 +44,8 @@ VALUES ( '$book_id', '$create_datetime')";
 $res = mysqli_query($conn, $sql);
 
 if (!$res) {
-  // alert('Fail to create book status, Please contact admin', '../add_book.php');
   alert('Fail to create book status, Please contact admin', '../admin/add_book.php');
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-// alert('added successfully', '../add_book.php');
 alert('added successfully', '../admin/add_book.php');

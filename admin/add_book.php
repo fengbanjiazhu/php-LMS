@@ -12,7 +12,7 @@ echo "";
 </style>
 
 <div class="layui-body">
-  <form class="layui-form" action="../functions/add_book_check.php" method="post" enctype="multipart/form-data">
+  <form class="layui-form" action="./add_book_check.php" method="post" enctype="multipart/form-data">
     <div class="demo-reg-container">
       <h1 class="title">Add new Book</h1>
       <div class="layui-form-item">
