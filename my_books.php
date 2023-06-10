@@ -27,10 +27,9 @@ include("./functions/loginAuth.php");
         <span class="card__footer-text">${data.Category}</span>
       </p>
     </div>
-
     <div class="card__footer">
       <p>
-        <span class="card__footer-text">${data.Publisher}</span>
+        <span class="card__footer-text">Expire Date: ${data.expiresDate}</span>
       </p>
     </div>
   </div>`;
@@ -52,6 +51,19 @@ include("./functions/loginAuth.php");
   const myBookStatus = bookStatusData.filter(el => el.memberId === currentUserId);
   if (myBookStatus?.length > 0) {
     myBookData = bookData.filter(book => myBookStatus.some(bookStatus => bookStatus.bookId * 1 === book.id * 1));
+
+    myBookDetails = myBookData.map(book => {
+      const {
+        appliedDate
+      } = myBookStatus.find(status => status.bookId * 1 === book.id * 1);
+      const date = new Date(appliedDate);
+      let expiresDate = new Date(date.setDate(date.getDate() + 21));
+      var year = date.getFullYear();
+      var month = ("0" + (date.getMonth() + 1)).slice(-2);
+      var day = ("0" + date.getDate()).slice(-2);
+      book.expiresDate = `${year}-${month}-${day}`;
+      return book
+    })
     renderPage(myBookData)
   } else {
     const mainContainer = document.querySelector(".main-container");
