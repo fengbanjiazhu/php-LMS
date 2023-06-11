@@ -20,7 +20,6 @@ $res = mysqli_query($conn, $sql);
 
 if (!$res) {
   echo "Failed to borrow book, please try again later!";
-
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 

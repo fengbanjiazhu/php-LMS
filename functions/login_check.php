@@ -1,16 +1,18 @@
 <?php
 include('../conn.php');
 
-$email = $_POST['email'];
-$password = $_POST['password'];
+$email = mysqli_real_escape_string($conn, $_POST['email']);
+$password = mysqli_real_escape_string($conn, $_POST['password']);
 
 $sql = "SELECT * FROM users WHERE email='$email'";
+
 $res = mysqli_query($conn, $sql);
 
 
 // while
 if (mysqli_num_rows($res) !== 1) {
   alert('This email is not signed up yet', '../login.php');
+  die();
 }
 
 $row = mysqli_fetch_assoc($res);
@@ -22,6 +24,7 @@ $memberId = $row['Member_id'];
 
 if (!password_verify($password, $password_hash)) {
   alert('Wrong password, please try again', '../login.php');
+  die();
 }
 
 $_SESSION['email'] = $email;
